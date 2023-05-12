@@ -1,0 +1,40 @@
+version: '3'
+services:
+  front:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    container_name: reactui
+    environment:
+      - WATCHPACK_POLLING=true
+    tty: true
+    stdin_open: true
+    networks:
+      - mern-stack-network
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    container_name: backend
+    restart: always
+    networks:
+      - mern-stack-network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    container_name: mongodb
+    networks:
+      - mern-stack-network
+    volumes:
+      - /home/charlestomar0408/mongo-backup:/data/db
+
+networks:
+  mern-stack-network:
+    driver: bridge
