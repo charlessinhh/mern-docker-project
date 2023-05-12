@@ -9,7 +9,7 @@ const ProductList = () => {
   }, []);
 
   const getProducts = async () => {
-    let result = await fetch("http://localhost:5000/api/products", {
+    let result = await fetch("http://34.67.206.143:5000/api/products", {
       headers: {
         authorization: JSON.parse(localStorage.getItem("token")),
       },
@@ -22,7 +22,7 @@ const ProductList = () => {
 
   const deleteProduct = async (id) => {
     console.log(id);
-    let result = await fetch(`http://localhost:5000/api/product/${id}`, {
+    let result = await fetch(`http://34.67.206.143:5000/api/product/${id}`, {
       method: "delete",
     });
     result = await result.json();
@@ -36,7 +36,7 @@ const ProductList = () => {
     let key = event.target.value;
     // console.log(key);
     if (key) {
-      let result = await fetch(`http://localhost:5000/api/search/${key}`);
+      let result = await fetch(`http://34.67.206.143:5000/api/search/${key}`);
       result = await result.json();
       // console.log(result);
       if (result) {
