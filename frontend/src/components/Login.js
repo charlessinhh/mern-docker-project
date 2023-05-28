@@ -14,7 +14,7 @@ const Login = () => {
   }, []);
 
   const handleLogin = async () => {
-    let result = await fetch("http://34.67.206.143:5000/api/login", {
+    let result = await fetch("/api/login", {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
