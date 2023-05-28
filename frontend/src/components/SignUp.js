@@ -15,7 +15,7 @@ const SignUp = () => {
 
   const collectData = async () => {
     console.log(name, email, password);
-    let data = await fetch("http://34.67.206.143:5000/api/register", {
+    let data = await fetch("/api/register", {
       method: "post",
       body: JSON.stringify({ name, email, password }),
       headers: {
